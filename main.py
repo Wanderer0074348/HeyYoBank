@@ -10,7 +10,7 @@ def CheckMinBalance(balance):
         return True
 
 
-def openAccount(creds: list):
+def OpenAccount(creds: list):
     with open("Accounts.csv", "a+") as f:
         csvwriter = csv.writer(f)
         csvwriter.writerow(creds)
@@ -64,7 +64,7 @@ def Menu():
         WithdrawMoney()
 
 
-def transferMoney():
+def TransferMoney():
     id_ = int(input("Enter your id: "))
     id_to_transfer = int(input("Enter the id to transfer money to: "))
     amount = int(input("Enter the amount to be transferred: "))
@@ -75,7 +75,7 @@ def transferMoney():
     print("Money transferred successfully")
 
 
-def addMoney():
+def AddMoney():
     id_ = int(input("Enter your id: "))
     amount = int(input("Enter the amount to be added: "))
     df = pd.read_csv("Accounts.csv")
