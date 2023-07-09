@@ -50,13 +50,28 @@ def NewUser():
     else:
         Menu()
 
+
 def Menu():
-    print("1. View Balance\n2. Add Money")
+    print("1. View Balance\n2. Add Money\n3. Transfer Money")
     choice = int(input("Enter your choice: "))
     if choice == 1:
         ViewBalance(UserSearchCredentials()[0])
-    else:
+    elif choice == 2:
         addMoney()
+    elif choice == 3:
+        transferMoney()
+
+
+def transferMoney():
+    id_ = int(input("Enter your id: "))
+    id_to_transfer = int(input("Enter the id to transfer money to: "))
+    amount = int(input("Enter the amount to be transferred: "))
+    df = pd.read_csv("Accounts.csv")
+    df.loc[id_-1, "Balance"] -= amount
+    df.loc[id_to_transfer-1, "Balance"] += amount
+    df.to_csv("Accounts.csv", index=False)
+    print("Money transferred successfully")
+
 
 def addMoney():
     id_ = int(input("Enter your id: "))
@@ -65,6 +80,7 @@ def addMoney():
     df.loc[id_-1, "Balance"] += amount
     df.to_csv("Accounts.csv", index=False)
     print("Money added successfully")
+
 
 def main():
     NewUser()
