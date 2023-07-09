@@ -43,18 +43,20 @@ def UserSearchCredentials():
     return [id_, account_name]
 
 
-def existingUser():
+def NewUser():
     new_account = input("Do you want to create a new account? (y/n): ")
     if new_account == "y":
         openAccount(UserCredentials())
     else:
-        print("1. View Balance\n2. Add Money")
-        choice = int(input("Enter your choice: "))
-        if choice == 1:
-            ViewBalance(UserSearchCredentials()[0])
-        else:
-            addMoney()
+        Menu()
 
+def Menu():
+    print("1. View Balance\n2. Add Money")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        ViewBalance(UserSearchCredentials()[0])
+    else:
+        addMoney()
 
 def addMoney():
     id_ = int(input("Enter your id: "))
@@ -64,9 +66,8 @@ def addMoney():
     df.to_csv("Accounts.csv", index=False)
     print("Money added successfully")
 
-
 def main():
-    existingUser()
+    NewUser()
 
 
 main()
