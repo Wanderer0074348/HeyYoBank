@@ -10,7 +10,7 @@ HeyYoBank is a practice banking app built using Python, Pandas, a database manag
 
 3. **View Account Balance**
 
-4. ** A Very Basic Transaction System**
+4. **A Very Basic Transaction System**
 ## Future Additions
 
 1. **Graphical User Interface (GUI)**
