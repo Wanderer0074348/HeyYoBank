@@ -10,7 +10,11 @@ class NewAccount:
         df = pd.DataFrame({'Id':self.UserIDGenerator(),'Name':[self.name],'Age':[self.age],'Income':[self.income],'Deposit':[self.deposit]})
         df.to_csv('./files/OpenedAccounts.csv',mode='a',header=False,index=False)
         print('Account opened successfully')
+        print('Your user id is: ',(self.UserIDGenerator()-1))
     def UserIDGenerator(self):
-        df = pd.read_csv("files/Accounts.csv")
-        return len(df)+1
+        df = pd.read_csv("files/OpenedAccounts.csv")
+        if len(df) == 0:
+            return 1000000
+        else:
+            return df.iloc[-1]['Id'] + 1
 

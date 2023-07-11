@@ -1,4 +1,3 @@
-import csv
 import pandas as pd
 
 class BankServices():
@@ -23,5 +22,9 @@ class BankServices():
         df.loc[df['Id']==self.userid,'Deposit'] -= amount
         df.to_csv('./files/OpenedAccounts.csv',index=False)
         print('Amount transferred successfully')
-
+    def RemoveAccount(self)->None:
+        df = pd.read_csv('./files/OpenedAccounts.csv')
+        df = df[df['Id']!=self.userid]
+        df.to_csv('./files/OpenedAccounts.csv',index=False)
+        print('Account removed successfully')
 

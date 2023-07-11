@@ -3,11 +3,10 @@ sys.path.append( './src/' )
 from src.BankServices import BankServices as BankServices
 from src.NewAccount import NewAccount as NewAccount
 def main():
-    choice = int(input('Enter 1 to open a new account or 2 to access an existing account: '))
+    choice = int(input('Enter 1 to open a new account or 2 to access an existing account or 3 to delete an existing account : '))
     if choice == 1:
         x = NewAccount('John',25,50000,10000)
         x.open_account()
-        print('Account opened successfully')
     elif choice == 2:
         userid = int(input('Enter your user id: '))
         x = BankServices(userid)
@@ -26,6 +25,10 @@ def main():
             x.transfer(amount,userid)
         else:
             print('Invalid choice')
+    elif choice == 3:
+        userid = int(input('Enter your user id: '))
+        x = BankServices(userid)
+        x.RemoveAccount()
 
 
 main()
